@@ -2,12 +2,37 @@ import React from 'react'
 import { Github, Twitter, Linkedin, Mail } from "lucide-react";
 
 const footerLinks = {
-  Company: ["About", "Blog", "Careers", "Partners"],
-  Resources: [
-    "Documentation",
-    "Help Center",
+  Contacts: [
+    {
+      label: "Gmail",
+      href: "mailto:streetwebdesign@gmail.com",
+    },
+    {
+      label: "+254 729 599 659",
+      href: "tel:+254729599659",
+    },
+    {
+      label: "Nairobi, Kenya",
+      href: "https://maps.google.com/?q=Nairobi%2C%20Kenya",
+    },
   ],
-  Legal: ["Privacy", "Terms", "Cookie Policy", "Licenses", "Compliance"],
+  Legal: [
+    {
+      label: "Privacy",
+      href: "/legal/privacy-policy.pdf",
+      pdf: true,
+    },
+    {
+      label: "Terms",
+      href: "/legal/terms-of-service.pdf",
+      pdf: true,
+    },
+    {
+      label: "Cookie Policy",
+      href: "/legal/cookie-policy.pdf",
+      pdf: true,
+    },
+  ],
 };
 
 const Footer = () => {
@@ -15,7 +40,7 @@ const Footer = () => {
      <footer className="border-t border-rose-900 bg-rose-950 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
         {/* Main footer content - hidden on mobile, visible on sm and up */}
-        <div className="hidden sm:grid sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 lg:gap-12 mb-8 sm:mb-12">
+        <div className="hidden sm:grid sm:grid-cols-3 lg:grid-cols-6 gap-8 sm:gap-10 lg:gap-14 justify-items-center mb-8 sm:mb-12">
           <div className="col-span-1 sm:col-span-3 lg:col-span-2 text-center sm:text-left">
             <div className="flex items-center justify-center sm:justify-start space-x-2 mb-3 sm:mb-4">
               <div className="rounded-lg">
@@ -72,18 +97,20 @@ const Footer = () => {
           <div className="sm:col-span-3 lg:col-span-4">
             <div className="grid grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12">
               {Object.entries(footerLinks).map(([category, links]) => (
-                <div key={category}>
+                <div key={category} className='text-center'>
                   <h3 className="font-semibold text-white mb-3 sm:mb-4 text-sm sm:text-base">
                     {category}
                   </h3>
                   <ul className="space-y-2 sm:space-y-3">
                     {links.map((link) => (
-                      <li key={link}>
+                      <li key={`${category}-${link.label}`}>
                         <a
-                          href="#"
+                           href={link.href}
+                            target={link.pdf ? "_blank" : undefined}
+                            rel={link.pdf ? "noopener noreferrer" : undefined}
                           className="text-gray-400 hover:text-white transition-colors duration-200 text-xs sm:text-sm"
                         >
-                          {link}
+                          {link.label}
                         </a>
                       </li>
                     ))}
@@ -101,19 +128,25 @@ const Footer = () => {
             </p>
             <div className="flex items-center space-x-4 sm:space-x-6 text-xs sm:text-sm">
               <a
-                href="#"
+                 href="/legal/privacy-policy.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors duration-200"
               >
                 Privacy Policy
               </a>
               <a
-                href="#"
+                href="/legal/terms-of-service.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors duration-200"
               >
                 Terms of Service
               </a>
               <a
-                href="#"
+                href="/legal/cookie-policy.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors duration-200"
               >
                 Cookie Settings

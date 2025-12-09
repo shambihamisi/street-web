@@ -12,7 +12,7 @@ const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
             <div className='flex justify-between items-center h-14 sm:h-16 md:h-20'>
                 <div className='flex items-center space-x-2 group cursor-pointer'>
                     <div>
-                        <img src="/STREET LOGO.png" alt="Street" className='w-6 h-6 sm:w-8 sm:h-8'/>
+                        <img src="/STREET LOGO.png" alt="Street" className='w-8 h-8 sm:w-10 sm:h-10'/>
                     </div>
 
                     <span className='text-lg sm:text-xl md:text-2xl font-medium'>
